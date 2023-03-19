@@ -10,12 +10,23 @@ const choices = ['Rock', "Paper", "Scissors"];
 
 // get random int by scaling the Math.random funciton
 function getRandomInt(max) {
-    return Math.floor(Math.random() * max)
+    return Math.floor(Math.random() * max);
 }
 
-
+// generate random copmuter choice
 function getComputerChoice() {
     return choices[getRandomInt(choices.length)];
 }
 
-console.log(getComputerChoice())
+// prompt user input
+function getUserChoice() {
+    while (true) {
+        let userChoice = prompt("Make your selection");
+        userChoiceFormatted = userChoice.slice(0,1).toUpperCase() + userChoice.slice(1).toLowerCase();
+        if (choices.includes(userChoiceFormatted)){
+            return userChoiceFormatted;
+        } 
+    }
+}
+
+console.log(getUserChoice())
