@@ -83,11 +83,6 @@ function playGame() {
             return gameOutcome;
         }
     }
-    
-    // let userChoice = getUserChoice(),
-    //     computerChoice = getComputerChoice(),
-    //     roundOutcome = evaluateRound(userChoice, computerChoice);
-    // return roundOutcome;
 }
 
 function rps(){
