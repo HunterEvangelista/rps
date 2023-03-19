@@ -1,11 +1,3 @@
-// Rock Paper Scissors
-// Get in put from player
-// Get random selection for computer player
-// if player and computer have same choice pass
-// if player has Scissors it beats paper and loses to rock
-// if player has rock it beats scissors and loses to paper
-// if player has paper it beats rock and loses to scissors
-
 const choices = ['Rock', "Paper", "Scissors"];
 
 // get random int by scaling the Math.random funciton
@@ -31,70 +23,81 @@ function getUserChoice() {
 
 // evaluate the outcome of the round
 function evaluateRound(userChoice, computerChoice) {
-    let round = 1,
-        userWins = 0,
-        computerWins = 0;
-    
     if (userChoice === computerChoice) {
-        round++
-        return "Tie! Play again.";
+        return ["Tie! Play again.", 2];
     }else {
         switch(userChoice) {
             // Rock
             case choices[0]:
-                if (computerChoice === choices[2]) {
-                    computerWins++;
-                    return `Computer wins the round! "${computerChoice}" beats "${userChoice}".`;
+                if (computerChoice === choices[1]) {
+                    return [`Computer wins the round! ${computerChoice} beats ${userChoice}.`, 0];
                 } else {
-                    userWins++;
-                    return `You win the round! "${userChoice}" beats "${computerChoice}".`
+                    return [`Computer wins the round! ${computerChoice} beats ${userChoice}.`, 1];
                 }
             // Paper
             case choices[1]:
-                if (computerChoice === choices[3]) {
-                    computerWins++;
-                    return `Computer wins the round! "${computerChoice}" beats ${userChoice}.`;
+                if (computerChoice === choices[2]) {
+                    return [`Computer wins the round! ${computerChoice} beats ${userChoice}.`, 0];
                 } else {
-                    userWins++;
-                    return `You win the round! "${userChoice}" beats "${computerChoice}".`
+                    return [`Computer wins the round! ${computerChoice} beats ${userChoice}.`, 1];
                 }
             // Scissors
             case choices[2]:
                 if (computerChoice === choices[0]) {
-                    computerWins++;
-                    return `Computer wins the round! "${computerChoice}" beats "${userChoice}".`;
+                    return[`Computer wins the round! ${computerChoice} beats ${userChoice}.`, 0];
                 } else {
-                    userWins++;
-                    return `You win the round! "${userChoice}" beats "${computerChoice}".`
+                    return [`Computer wins the round! ${computerChoice} beats ${userChoice}.`, 1];
 
                 }
         }
     }
 }
 
-function playRound() {
-    let userChoice = getUserChoice(),
-        computerChoice = getComputerChoice(),
-        roundOutcome = evaluateRound(userChoice, computerChoice);
-    return roundOutcome;
+function playGame() {
+    let round = 1
+    let userWins = 0
+    let computerWins = 0;
+    
+    while (true) {
+        if (round <= 5) {
+            console.log(`Round ${round}`);
+            
+            let userChoice = getUserChoice(),
+            computerChoice = getComputerChoice(),
+            roundOutcome = evaluateRound(userChoice, computerChoice);
+            
+            for (let i = 0; i < 3; i++) {
+                console.log(choices[i] + "!");
+            }
+            console.log("Shoot!");
+            round++;
+            if (roundOutcome[1] === 1){
+                userWins++;
+            } else if( roundOutcome[1] === 0){
+                computerWins++;
+            }
+            console.log(roundOutcome[0]);
+            console.log(`Score is ${userWins} to ${computerWins}`);
+        } else{
+            let gameOutcome = [userWins, computerWins];
+            return gameOutcome;
+        }
+    }
+    
+    // let userChoice = getUserChoice(),
+    //     computerChoice = getComputerChoice(),
+    //     roundOutcome = evaluateRound(userChoice, computerChoice);
+    // return roundOutcome;
 }
 
-function playGame(){
-    while (round < 6 && userWins != computerWins) {
-        console.log(`Round "${round}"`);
-        let roundOutcome = playRound();
-        for (let i = 0; i < 3; i++) {
-            setTimeout(() => {
-                console.log(choices[i] + "!");
-            }, 2000);
-        }
-        console.log("Shoot!");
-        console.log(roundOutcome)
-        console.log(`Score is "${userWins}" to "${computerWins}"`)
-    }
-    if (userWins > computerWins) {
+function rps(){
+    let gameOutcome = playGame();
+
+    if (gameOutcome[0] > gameOutcome[1]) {
         console.log("You Win! Refresh page to play again.");
     } else {
         console.log("Computer Wins! Refresh page to play again.")
     }
 }
+
+rps()
