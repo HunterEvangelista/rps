@@ -59,7 +59,7 @@ function playGame() {
     let computerWins = 0;
     
     while (true) {
-        if (round <= 5) {
+        if ((userWins + computerWins) < 5) {
             console.log(`Round ${round}`);
             
             let userChoice = getUserChoice(),
