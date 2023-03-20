@@ -1,16 +1,13 @@
-const choices = ['Rock', "Paper", "Scissors"];
+const choices = ["Rock", "Paper", "Scissors"];
 
-// get random int by scaling the Math.random funciton
 function getRandomInt(max) {
     return Math.floor(Math.random() * max);
 }
 
-// generate random copmuter choice
 function getComputerChoice() {
     return choices[getRandomInt(choices.length)];
 }
 
-// prompt user input
 function getUserChoice() {
     while (true) {
         let userChoice = prompt("Make your selection");
@@ -21,11 +18,10 @@ function getUserChoice() {
     }
 }
 
-// evaluate the outcome of the round
 function evaluateRound(userChoice, computerChoice) {
     if (userChoice === computerChoice) {
         return ["Tie! Play again.", 2];
-    }else {
+    } else {
         switch(userChoice) {
             // Rock
             case choices[0]:
@@ -71,21 +67,21 @@ function playGame() {
             }
             console.log("Shoot!");
             round++;
-            if (roundOutcome[1] === 1){
+            if (roundOutcome[1] === 1) {
                 userWins++;
-            } else if( roundOutcome[1] === 0){
+            } else if( roundOutcome[1] === 0) {
                 computerWins++;
             }
             console.log(roundOutcome[0]);
             console.log(`Score is ${userWins} to ${computerWins}`);
-        } else{
+        } else {
             let gameOutcome = [userWins, computerWins];
             return gameOutcome;
         }
     }
 }
 
-function rps(){
+function rps() {
     let gameOutcome = playGame();
 
     if (gameOutcome[0] > gameOutcome[1]) {
