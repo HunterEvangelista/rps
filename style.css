@@ -2,3 +2,55 @@ body {
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #f6f4ef;
 }
+
+.header {
+    font-size: 52px;
+    color: #2E4368;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    max-height: 100px;
+    background-color: #D3D9EB;
+    border-radius: 20px;
+}
+
+.scoreboard {
+    font-size: 32px;
+    color: #2E4368;
+    display: flex;
+    flex-direction: column;
+    padding-left: 50px;
+    padding-right: 50px;
+    margin-top: 10px;
+    background-color: #A7B1C2;
+    border-radius: 20px;
+}
+
+.scoreboard .round {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-weight: 700;
+    border-bottom: 5px solid #0F1C2E;
+    margin-bottom: 10px;
+}
+
+.scoreboard-bottom {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+}
+
+.player-score,
+.computer-score {
+    font-weight: 700;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+}
+
+.player-score b,
+.computer-score b {
+    font-size: 64px;
+}
