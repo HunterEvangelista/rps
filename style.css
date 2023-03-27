@@ -13,7 +13,7 @@ body {
     justify-content: center;
     align-items: center;
     max-height: 100px;
-    background-color: #D3D9EB;
+    /* background-color: #D3D9EB; */
     border-radius: 20px;
 }
 
@@ -70,7 +70,6 @@ body {
     /* height: 50vh; */
     flex-basis: 1;
     flex-grow: 2;
-    marg
 }
 
 .choices div {
@@ -87,7 +86,6 @@ body {
 }
 
 .footer {
-    background-color: #D3D9EB;
     color: #0F1C2E;
     display: flex;
     flex-direction: row;
