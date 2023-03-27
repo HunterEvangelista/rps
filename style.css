@@ -1,6 +1,9 @@
 body {
     font-family: 'Source Sans Pro', sans-serif;
     background-color: #f6f4ef;
+    display: flex;
+    flex-direction: column;
+    height: 100vh;
 }
 
 .header {
@@ -54,3 +57,44 @@ body {
 .computer-score b {
     font-size: 64px;
 }
+
+.choices {
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    gap: 25px;
+    background-color: #7A8996;
+    margin-top: 10px;
+    border-radius: 20px;
+    /* height: 50vh; */
+    flex-basis: 1;
+    flex-grow: 2;
+    marg
+}
+
+.choices div {
+    border: 5px solid #1E304B;
+    border-radius: 20px;
+    padding: 5px;
+    margin: 15px;
+    background-color: #f6f4ef;
+}
+
+.choices img {
+    max-width: 150px;
+    max-height: auto;
+}
+
+.footer {
+    background-color: #D3D9EB;
+    color: #0F1C2E;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    border-radius: 20px;
+    padding: 5px;
+    flex-basis: 0;
+    margin-top: 5px;
+} 
