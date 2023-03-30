@@ -27,7 +27,11 @@ body {
     background-color: #A7B1C2;
     border-radius: 20px;
 }
-
+.scoreboard-center {
+    display: flex;
+    flex-direction: column;
+    flex-wrap: wrap;
+}
 .scoreboard .round {
     display: flex;
     justify-content: center;
@@ -57,25 +61,30 @@ body {
     font-size: 64px;
 }
 
+.player-score {
+    margin-right: 32px;
+}
+
 .choices {
     display: flex;
     flex-direction: row;
     justify-content: center;
     align-items: center;
     gap: 25px;
-    background-color: #7A8996;
+    background-color: rgba(122, 137, 150, .6);
     margin-top: 10px;
     border-radius: 20px;
     flex-basis: 1;
     flex-grow: 2;
 }
 
-.choices div {
+.choices button {
     border: 5px solid #1E304B;
     border-radius: 20px;
     padding: 5px;
     margin: 15px;
     background-color: #f6f4ef;
+    appearance: none;
 }
 
 .choices img {
@@ -93,4 +102,4 @@ body {
     padding: 5px;
     flex-basis: 0;
     margin-top: 5px;
-} 
+}
