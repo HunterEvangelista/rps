@@ -43,6 +43,38 @@ body {
     margin-left: 90px;
 }
 
+.info-modal {
+    display: none;
+    position: fixed;
+    top: 7%;
+    /* left: 50; */
+    right: 9%;
+    width: 25%;
+    height: auto;
+    background-color: rgba(211, 217, 235, 0.8);
+    z-index: 9999;
+    border-radius: 20px;
+}
+
+.info-content {
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: center;
+    color: #2E4368;
+    font-weight: 700;
+}
+
+.info-content button {
+    font-family: 'Source Sans Pro', sans-serif;;
+    appearance: none;
+    border: 1px solid #1E304B;
+    border-radius: 20px;
+    background-color: #f6f4ef;
+    color: #1E304B;
+}
+
+
 .scoreboard {
     font-size: 32px;
     color: #2E4368;

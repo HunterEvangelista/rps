@@ -148,3 +148,21 @@ function evaluateGame(gameOutcome) {
     }
     return  gameOutcome[0] + "<br/>" + "<b>Computer Wins! Refresh the page to play again.</b>"
 }
+
+let infoModal = document.querySelector(".info-modal")
+let infoModalButton = document.querySelector(".info-close")
+let infoIcon = document.querySelector(".info-icon");
+
+infoIcon.addEventListener("click", () => {
+    infoModal.style.display = "flex";
+})
+infoModalButton.addEventListener("click", () => {
+    infoModal.style.display = "none";
+})
+
+window.addEventListener("click", (e) => {
+    if(e.target.className == "info-content") {
+        infoModal.style.display = "none";
+    }
+    
+})
