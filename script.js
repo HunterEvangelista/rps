@@ -5,9 +5,39 @@ let computerWins = 0
 let userChoice
 let computerChoice;
 
-document.addEventListener("keydown", eventFunction)
+document.addEventListener("keydown", handleChoiceKey)
 
-function eventFunction(e) {
+function handleChoiceClick(e) {
+    // convert img class to proper userChoice format to work with existing logic
+    let userInput = e.target.className;
+    userChoice = userInput.slice(0,1).toUpperCase() + userInput.slice(1).toLowerCase();
+    
+    computerChoice = getComputerChoice();
+    let roundOutcome = playRound();
+    if(userWins === 3 || computerWins === 3) {
+        updateRound(round, userWins, computerWins);
+        
+        // remove ability to input choice at end of the game
+        document.removeEventListener("keydown", handleChoiceKey);
+        choiceDivs.forEach(choice => {
+            choice.removeEventListener("click", handleChoiceClick)
+        });
+
+        let gameOutcome = evaluateGame(roundOutcome);
+        document.getElementById("scoreboard-center").innerHTML = gameOutcome;
+    } else {
+        updateRound();
+        document.getElementById("scoreboard-center").innerHTML = roundOutcome[0];
+    }
+};
+
+let choiceDivs = document.querySelectorAll(".choice");
+choiceDivs.forEach(choice => {
+    choice.addEventListener("click", handleChoiceClick)
+})
+
+
+function handleChoiceKey(e) {
     let key = e.key;
     const validKeys = ["r", "p", "s"];
 
@@ -15,9 +45,14 @@ function eventFunction(e) {
         userChoice = getUserChoice(key),
         computerChoice = getComputerChoice();
         let roundOutcome = playRound();
-        if(userWins + computerWins === 5) {
+        if(userWins === 3 || computerWins === 3) {
             updateRound(round, userWins, computerWins);
-            document.removeEventListener("keydown", eventFunction);
+
+            // remove ability to input choice at end of the game
+            choiceDivs.forEach(choice => {
+                choice.removeEventListener("click", handleChoiceClick)
+            });
+            document.removeEventListener("keydown", handleChoiceKey);
             let gameOutcome = evaluateGame(roundOutcome);
             document.getElementById("scoreboard-center").innerHTML = gameOutcome;
         } else {
@@ -82,21 +117,21 @@ function updateRound() {
     document.getElementById("computer-score").innerHTML = computerWins;
 }
 
-function centerScoreboardPrint() {
-    const statements = ["Rock", "Paper", "Scissors", "Shoot"];
-    // setTimeout(function() {
-    for (let i = 0; i < statements.length; i++) {
-        document.getElementById("scoreboard-center").innerHTML = statements[i] + "!"
-    }
-    // }, 500)
+// function centerScoreboardPrint() {
+//     const statements = ["Rock", "Paper", "Scissors", "Shoot"];
+//     // setTimeout(function() {
+//     for (let i = 0; i < statements.length; i++) {
+//         document.getElementById("scoreboard-center").innerHTML = statements[i] + "!"
+//     }
+//     // }, 500)
     
-}
+// }
 
 function playRound() {
     let = roundOutcome = evaluateRound(userChoice, computerChoice);
     
     // print Rock! Paper! Scissors! Shoot! before showing results
-    centerScoreboardPrint();
+    // centerScoreboardPrint(); does not work as intended, needs to be reworked
     round++;
     
     if (roundOutcome[1] === 1) {
@@ -113,3 +148,21 @@ function evaluateGame(gameOutcome) {
     }
     return  gameOutcome[0] + "<br/>" + "<b>Computer Wins! Refresh the page to play again.</b>"
 }
+
+let infoModal = document.querySelector(".info-modal")
+let infoModalButton = document.querySelector(".info-close")
+let infoIcon = document.querySelector(".info-icon");
+
+infoIcon.addEventListener("click", () => {
+    infoModal.style.display = "flex";
+})
+infoModalButton.addEventListener("click", () => {
+    infoModal.style.display = "none";
+})
+
+window.addEventListener("click", (e) => {
+    if(e.target.className == "info-content") {
+        infoModal.style.display = "none";
+    }
+    
+})
